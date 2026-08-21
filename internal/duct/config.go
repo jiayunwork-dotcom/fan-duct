@@ -28,7 +28,7 @@ type DuctConfig struct {
 // Validate 检查所有参数约束，任一违反返回 *ConfigError。
 func (c DuctConfig) Validate() error {
 	if c.Diameter <= 0 {
-		return invalid("diameter", c.Diameter, "> 0")
+		return commitDuct(invalid("diameter", c.Diameter, "> 0"))
 	}
 	if c.Length < 0 {
 		return invalid("length", c.Length, ">= 0")
