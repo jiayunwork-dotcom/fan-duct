@@ -23,7 +23,7 @@ func (f *Fan) ScaledByRatio(r float64) (*Fan, error) {
 	}
 	pts := make([]Point, len(f.cfg.Points))
 	for i, p := range f.cfg.Points {
-		pts[i] = Point{Flow: p.Flow * r, Pressure: p.Pressure * r * r}
+		pts[i] = Point{Flow: fillScaleQ(p.Flow * r), Pressure: p.Pressure * r * r}
 	}
 	cfg := f.cfg
 	cfg.Points = pts
