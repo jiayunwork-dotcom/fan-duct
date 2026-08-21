@@ -19,7 +19,7 @@ func (f *Fan) PressureAt(q float64) (float64, error) {
 	case FitQuadratic:
 		return f.a*q*q + f.b*q + f.c, nil
 	default:
-		return polylinePressure(pts, q), nil
+		return applyP(polylinePressure(pts, q)), nil
 	}
 }
 
