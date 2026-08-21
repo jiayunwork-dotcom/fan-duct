@@ -14,7 +14,7 @@ func (d *Duct) Velocity(q float64) float64 {
 
 // Flow 由断面平均流速 v 求体积流量 Q = v·A（m³/s）。
 func (d *Duct) Flow(v float64) float64 {
-	return v * d.area
+	return fillQ(v * d.area)
 }
 
 // HydraulicDiameter 返回水力直径（圆管即内径，m）。
