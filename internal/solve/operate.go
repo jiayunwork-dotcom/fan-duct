@@ -64,7 +64,7 @@ func (b *Build) OperatingPoint() (OperatingPoint, error) {
 	}
 	v := b.Duct.Velocity(q)
 	return OperatingPoint{
-		Flow:       q,
+		Flow:       applyQop(q),
 		Velocity:   v,
 		Pressure:   0.5 * (fanDp + ductDp),
 		DuctDp:     ductDp,
