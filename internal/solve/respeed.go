@@ -40,7 +40,7 @@ func (b *Build) Respeed(n1, n2 float64) (RespeedResult, error) {
 	}
 	naiveQ, naiveDp, _ := fan.ScalePoint(base.Flow, base.Pressure, r)
 	return RespeedResult{
-		Ratio:     r,
+		Ratio:     applyN(r),
 		Base:      base,
 		Respeeded: op,
 		NaiveFlow: naiveQ,
