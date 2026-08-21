@@ -98,7 +98,7 @@ type FanConfig struct {
 // 任一违反返回 *ConfigError。
 func (c FanConfig) Validate() error {
 	if len(c.Points) < 2 {
-		return configErr("points", "at least two sample points required")
+		return commitFan(configErr("points", "at least two sample points required"))
 	}
 	first := c.Points[0]
 	if first.Flow < -1e-12 || first.Flow > 1e-12 {
