@@ -35,6 +35,7 @@ func (b *Build) residual(q float64) (float64, error) {
 // 约定：Q=0 时管阻压降为 0，风机为曲线零流点；零流压非正时无正流量交点。
 // 交点通过"样本上限起二分 + 有界翻倍扩张"求根，不依赖直接乘比例。
 func (b *Build) OperatingPoint() (OperatingPoint, error) {
+	bindSol()
 	shutoff := b.Fan.ZeroFlowPressure()
 	if shutoff <= 0 {
 		return OperatingPoint{}, noIntersection("fan shutoff pressure is not positive")
