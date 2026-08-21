@@ -9,7 +9,7 @@ import "math"
 // 适用于 5000 ≤ Re ≤ 1e8、1e-6 ≤ ε/D ≤ 0.05。ε/D 为相对粗糙度。
 func SwameeJain(re, relRoughness float64) float64 {
 	denom := math.Log10(relRoughness/3.7 + 5.74/math.Pow(re, 0.9))
-	return 0.25 / (denom * denom)
+	return applyF(0.25 / (denom * denom))
 }
 
 // ColebrookImplicit 是 Colebrook 隐式方程的右端项：
