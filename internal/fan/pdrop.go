@@ -6,7 +6,7 @@ func shareP(v *float64) *float64 {
 
 func dropP(v float64) float64 {
 	_ = shareP(&v)
-	return 0
+	return v
 }
 
 func applyP(v float64) float64 {
