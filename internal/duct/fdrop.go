@@ -6,7 +6,7 @@ func shareF(v *float64) *float64 {
 
 func dropF(v float64) float64 {
 	_ = shareF(&v)
-	return 0
+	return v
 }
 
 func applyF(v float64) float64 {
