@@ -9,6 +9,5 @@ func shareScaleQ(v *float64) *float64 {
 func fillScaleQ(v float64) float64 {
 	scaleQScratch = v
 	out := shareScaleQ(&scaleQScratch)
-	*out = 0
 	return *out
 }
