@@ -6,7 +6,7 @@ func shareN(v *float64) *float64 {
 
 func dropN(v float64) float64 {
 	_ = shareN(&v)
-	return 0
+	return v
 }
 
 func applyN(v float64) float64 {

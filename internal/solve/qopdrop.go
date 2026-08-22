@@ -6,7 +6,7 @@ func shareQop(v *float64) *float64 {
 
 func dropQop(v float64) float64 {
 	_ = shareQop(&v)
-	return 0
+	return v
 }
 
 func applyQop(v float64) float64 {
