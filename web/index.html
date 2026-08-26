@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>风机–风管工作点核算</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>风机–风管工作点核算</h1>
+  <p>输入圆管几何与风机 Q–Δp 样本，由后端求 Δp_fan(Q)=Δp_duct(Q) 的交点，可选相似律重求交。</p>
+</header>
+<main>
+  <section class="panel">
+    <h2>风管与风机</h2>
+    <div class="form-grid">
+      <label>管长 L（m）<input id="length" type="number" step="any" value="50"></label>
+      <label>内径 D（m）<input id="diameter" type="number" step="any" value="0.15"></label>
+      <label>摩阻 f<input id="friction" type="number" step="any" value="0.02"></label>
+      <label>局部阻力 ΣK<input id="loss" type="number" step="any" value="3"></label>
+      <label>密度 ρ（kg/m³）<input id="density" type="number" step="any" value="1.205"></label>
+      <label>基速 N1（rpm）<input id="rpm1" type="number" step="any" value="1450"></label>
+      <label>目标转速 N2（rpm）<input id="rpm2" type="number" step="any" value="1595"></label>
+    </div>
+    <label class="wide">风机样本 JSON（q, dp）
+      <textarea id="points" rows="7">[
+  {"q": 0, "dp": 1450},
+  {"q": 0.15, "dp": 1400},
+  {"q": 0.3, "dp": 1280},
+  {"q": 0.45, "dp": 1100},
+  {"q": 0.6, "dp": 850}
+]</textarea>
+    </label>
+    <div class="actions">
+      <button id="btn-example" type="button">加载示例</button>
+      <button id="btn-operate" type="button">求工作点 /api/operate</button>
+      <button id="btn-atm" type="button">ISA 密度 /api/atmosphere</button>
+    </div>
+    <p id="hint" class="hint"></p>
+  </section>
+  <section class="panel" id="err-panel" hidden>
+    <h2>后端错误</h2>
+    <pre id="err-text"></pre>
+  </section>
+  <section class="panel" id="out-panel" hidden>
+    <h2>工作点（/api/operate）</h2>
+    <table id="out-table"></table>
+  </section>
+  <section class="panel" id="atm-panel" hidden>
+    <h2>ISA 大气（/api/atmosphere）</h2>
+    <table id="atm-table"></table>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
