@@ -86,7 +86,14 @@ func Intersect(rise Riser, drop Dropper) (Point, error) {
 		}
 		q = mid
 	}
-	return pack(rise, drop, q)
+	pt, err := pack(rise, drop, q)
+	if err != nil {
+		return pt, err
+	}
+	if par, ok := rise.(ParallelRise); ok && len(par.Items) >= 2 {
+		pt.Flow = HoldParLive(pt.Flow)
+	}
+	return pt, nil
 }
 
 func pack(rise Riser, drop Dropper, q float64) (Point, error) {

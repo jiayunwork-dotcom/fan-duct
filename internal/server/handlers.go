@@ -139,6 +139,9 @@ func handleNetwork(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, err.Error())
 		return
 	}
+	if req.Mode == "parallel-fan" {
+		op.Flow = HoldParAPI(op.Flow)
+	}
 	writeJSON(w, http.StatusOK, NetworkResponse{
 		Flow:     op.Flow,
 		Pressure: op.Pressure,
