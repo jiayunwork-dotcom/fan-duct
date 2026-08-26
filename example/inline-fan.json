@@ -1,0 +1,24 @@
+{
+  "duct": {
+    "length": 50,
+    "diameter": 0.15,
+    "friction": 0.02,
+    "lossCoeff": 3,
+    "density": 1.205,
+    "viscosity": 1.82e-5
+  },
+  "fan": {
+    "points": [
+      {"q": 0, "dp": 1450},
+      {"q": 0.15, "dp": 1400},
+      {"q": 0.3, "dp": 1280},
+      {"q": 0.45, "dp": 1100},
+      {"q": 0.6, "dp": 850}
+    ],
+    "efficiency": [0.58, 0.62, 0.66, 0.63, 0.55],
+    "fit": "polyline",
+    "extrapolate": "error"
+  },
+  "speed": {"rpm": 1450},
+  "newSpeed": {"rpm": 1595}
+}
