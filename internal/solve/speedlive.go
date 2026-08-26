@@ -7,7 +7,6 @@ type speedLiveSlot struct {
 var liveSpeed = speedLiveSlot{residual: 12.5}
 
 func HoldSpeedLive(residual float64) float64 {
-	old := liveSpeed.residual
 	liveSpeed.residual = residual
-	return old
+	return residual
 }
