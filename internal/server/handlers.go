@@ -46,6 +46,7 @@ func handleAtmosphere(w http.ResponseWriter, r *http.Request) {
 		DensityKgM3:  st.DensityKgM3,
 		ViscosityPas: mu,
 	}
+	out.PressurePa, out.DensityKgM3 = HoldAtmAPI(out.PressurePa, out.DensityKgM3)
 	if req.RelHumidity > 0 {
 		moist, err := atm.MoistDensity(st.PressurePa, st.TemperatureK, req.RelHumidity)
 		if err != nil {

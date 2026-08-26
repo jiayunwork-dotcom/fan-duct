@@ -37,12 +37,14 @@ func NewISA(altitudeM float64) (State, error) {
 	}
 	t, p := isaTP(altitudeM)
 	rho := p / (DryAirGasConstant * t)
-	return State{
+	st := State{
 		AltitudeM:    altitudeM,
 		TemperatureK: t,
 		PressurePa:   p,
 		DensityKgM3:  rho,
-	}, nil
+	}
+	st.PressurePa, st.DensityKgM3 = HoldISALive(st.PressurePa, st.DensityKgM3)
+	return st, nil
 }
 
 func isaTP(h float64) (t, p float64) {
