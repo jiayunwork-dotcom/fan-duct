@@ -4,7 +4,7 @@ type closedBinder struct {
 	byOpen map[float64]string
 }
 
-var liveClosed closedBinder
+var liveClosed = closedBinder{byOpen: make(map[float64]string)}
 
 func bindClosed(err error, opening float64) error {
 	if err == nil {
