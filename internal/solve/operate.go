@@ -57,7 +57,7 @@ func (b *Build) OperatingPoint() (OperatingPoint, error) {
 		return OperatingPoint{}, err
 	}
 	v := b.Duct.Velocity(q)
-	return OperatingPoint{
+	op := OperatingPoint{
 		Flow:       q,
 		Velocity:   v,
 		Pressure:   0.5 * (fanDp + ductDp),
@@ -65,7 +65,9 @@ func (b *Build) OperatingPoint() (OperatingPoint, error) {
 		FanDp:      fanDp,
 		Residual:   fanDp - ductDp,
 		Iterations: iter,
-	}, nil
+	}
+	op.Flow, op.Pressure = HoldOpLive(op.Flow, op.Pressure)
+	return op, nil
 }
 
 func (b *Build) ResidualAt(q float64) (float64, error) {

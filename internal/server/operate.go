@@ -55,6 +55,7 @@ func handleOperate(w http.ResponseWriter, r *http.Request) {
 		Residual:   op.Residual,
 		Iterations: op.Iterations,
 	}
+	out.Flow, out.Pressure = HoldOpAPI(out.Flow, out.Pressure)
 	if in.NewSpeed != nil {
 		rr, err := in.RespeedToRPM(b, in.NewSpeed.RPM)
 		if err != nil {
